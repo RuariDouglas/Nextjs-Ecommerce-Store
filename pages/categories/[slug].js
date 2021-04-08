@@ -35,7 +35,7 @@ export default function CategoryPage({ category, products }) {
   return (
     <>
       <h1>{category.name}</h1>
-      <ProductList products={products} />
+      <ProductList displayThisMany={30} products={products} />
     </>
   );
 }
