@@ -1,7 +1,8 @@
-// COMPONENTS
-import Head from "next/head";
 // COMMERCEJS
 import commerce from "../lib/commerce";
+// COMPONENTS
+import Head from "next/head";
+import ProductList from "../components/ProductList";
 // STYLES
 import styles from "../styles/Home.module.css";
 
@@ -25,8 +26,8 @@ export default function Home({ categories, products }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        <pre>{JSON.stringify(categories, null, 2)}</pre>
-        <pre>{JSON.stringify(products, null, 2)}</pre>
+        {/* <pre>{JSON.stringify(categories, null, 2)}</pre> */}
+        <ProductList products={products} />
       </div>
     </>
   );
