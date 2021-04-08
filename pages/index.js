@@ -24,7 +24,6 @@ export async function getStaticProps() {
 }
 
 export default function Home({ merchant, categories, products }) {
-  console.log(merchant);
   return (
     <>
       <Head>
