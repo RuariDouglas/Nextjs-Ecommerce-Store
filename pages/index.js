@@ -31,7 +31,7 @@ export default function Home({ merchant, categories, products }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        <img style={{ width: "100px" }} src={merchant.logo} alt="" />
+        <h1>Logo Here</h1>
         {/* CATEGORIES SECTION */}
         <h3>
           <Link href={"/categories"}>
