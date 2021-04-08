@@ -1,7 +1,9 @@
+import Nav from "./Nav";
+
 const Layout = ({ children }) => {
   return (
     <>
-      <div className="header">Header</div>
+      <Nav />
       {children}
       <div className="footer">Footer</div>
     </>

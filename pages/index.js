@@ -6,8 +6,6 @@ import Head from "next/head";
 import Link from "next/link";
 import ProductList from "../components/ProductList";
 import CategoryList from "../components/CategoryList";
-// STYLES
-import styles from "../styles/Home.module.css";
 
 export async function getStaticProps() {
   const merchant = await commerce.merchants.about();
