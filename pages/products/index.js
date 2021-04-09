@@ -1,12 +1,10 @@
-import { server } from "../../config";
 // COMMERCEJS
 import commerce from "../../lib/commerce";
 // COMPONENTS
 import ProductList from "../../components/ProductList";
 
 export async function getStaticProps() {
-  const productsJson = await fetch(`${server}/api/products`);
-  const products = await productsJson.json();
+  const { data: products } = await commerce.products.list();
   return {
     props: {
       products,

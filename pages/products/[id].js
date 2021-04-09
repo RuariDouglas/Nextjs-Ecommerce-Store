@@ -1,15 +1,10 @@
-import { server } from "../../config";
 // COMMERCEJS
 import commerce from "../../lib/commerce";
 
 export async function getStaticProps({ params }) {
   const { id } = params;
 
-  const productsJson = await fetch(`${server}/api/products`);
-  const products = await productsJson.json();
-  const product = products.filter((product) => {
-    return product.id === id;
-  });
+  const product = await commerce.products.retrieve(id);
 
   return {
     props: {
@@ -19,8 +14,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const productsJson = await fetch(`${server}/api/products`);
-  const products = await productsJson.json();
+  const { data: products } = await commerce.products.list();
   return {
     paths: products.map((product) => ({
       params: {
@@ -32,12 +26,11 @@ export async function getStaticPaths() {
 }
 
 export default function ProductPage({ product }) {
-  const prod = product[0];
   return (
     <>
       <p>
-        {prod.name}
-        {prod.price.formatted_with_symbol}
+        {product.name}
+        {product.price.formatted_with_symbol}
       </p>
     </>
   );

@@ -10,10 +10,8 @@ import ProductList from "../components/ProductList";
 import CategoryList from "../components/CategoryList";
 
 export async function getStaticProps() {
-  const productsJson = await fetch(`${server}/api/products`);
-  const categoriesJson = await fetch(`${server}/api/categories`);
-  const products = await productsJson.json();
-  const categories = await categoriesJson.json();
+  const { data: products } = await commerce.products.list();
+  const { data: categories } = await commerce.categories.list();
 
   return {
     props: {
