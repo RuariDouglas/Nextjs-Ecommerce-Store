@@ -1,3 +1,5 @@
+import { server } from "../config";
+
 // COMMERCEJS
 import commerce from "../lib/commerce";
 // COMPONENTS
@@ -8,20 +10,20 @@ import ProductList from "../components/ProductList";
 import CategoryList from "../components/CategoryList";
 
 export async function getStaticProps() {
-  const merchant = await commerce.merchants.about();
-  const { data: categories } = await commerce.categories.list();
-  const { data: products } = await commerce.products.list();
+  const productsJson = await fetch(`${server}/api/products`);
+  const categoriesJson = await fetch(`${server}/api/categories`);
+  const products = await productsJson.json();
+  const categories = await categoriesJson.json();
 
   return {
     props: {
-      merchant,
-      categories,
       products,
+      categories,
     },
   };
 }
 
-export default function Home({ merchant, categories, products }) {
+export default function Home({ categories, products }) {
   return (
     <>
       <Head>
@@ -43,7 +45,7 @@ export default function Home({ merchant, categories, products }) {
             <a>Products</a>
           </Link>
         </h3>
-        <ProductList products={products} />
+        <ProductList displayThisMany={6} products={products} />
       </div>
     </>
   );
