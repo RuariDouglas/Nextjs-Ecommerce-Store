@@ -11,7 +11,7 @@ export default function ProductList({ displayThisMany, products }) {
           <li key={product.id}>
             <Link href={`/products/${product.id}`}>
               <a>
-                <Product {...product} />
+                <Product product={product} />
               </a>
             </Link>
           </li>

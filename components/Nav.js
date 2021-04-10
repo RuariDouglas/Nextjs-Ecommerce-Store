@@ -5,7 +5,7 @@ const Nav = () => {
   return (
     <nav>
       <div className="logo">
-        <Image src="/vercel.svg" alt="site logo" width={217} height={71} />
+        <Image src="/logo.png" alt="site logo" width={180} height={24} />
       </div>
       <Link href="/">
         <a>Home</a>
